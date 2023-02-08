@@ -23,7 +23,7 @@ export default function Footer() {
     <Link to="#" key={ind}>
       <FontAwesomeIcon
         icon={icon}
-        className="w-6 h-6 text-gray-300"
+        className="w-6 h-6 text-gray-300 hover:text-gold"
       ></FontAwesomeIcon>
     </Link>
   ));
