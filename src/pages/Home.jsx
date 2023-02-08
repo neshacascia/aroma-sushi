@@ -4,6 +4,7 @@ import Button from '../components/Button';
 import AboutImages from '../components/AboutImages';
 import FeaturedMenuItems from '../components/FeaturedMenuItems';
 import InstagramPhotos from '../components/InstagramPosts';
+import Footer from '../components/Footer';
 
 export default function Home() {
   return (
@@ -75,6 +76,7 @@ export default function Home() {
       </section>
 
       <InstagramPhotos />
+      <Footer />
     </section>
   );
 }
