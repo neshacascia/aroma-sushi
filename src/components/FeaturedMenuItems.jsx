@@ -1,11 +1,9 @@
 import { useState, useEffect } from 'react';
+import Button from './Button';
 
 export default function FeaturedMenuItems() {
   const [featuredItems, setFeaturedItems] = useState([]);
 
-  // import.meta.env.VITE_API_URL
-  // import.meta.env.VITE_API_TOKEN
-  // import.meta.env.VITE_IMG_URL
   useEffect(() => {
     async function fetchData() {
       try {
@@ -29,7 +27,7 @@ export default function FeaturedMenuItems() {
   }, []);
 
   const featuredMenuItems = featuredItems.map(item => (
-    <div className="w-max flex items-center gap-4">
+    <div className="w-max flex items-center gap-4" key={item.id}>
       <img
         src={
           import.meta.env.VITE_IMG_URL +
@@ -57,7 +55,9 @@ export default function FeaturedMenuItems() {
         FEATURED MENU ITEMS
       </h2>
 
-      <div className="flex flex-col gap-10">{featuredMenuItems}</div>
+      <div className="flex flex-col gap-10 mb-14">{featuredMenuItems}</div>
+
+      <Button text="BROWSE FULL MENU" border="true" hover="true" />
     </section>
   );
 }
