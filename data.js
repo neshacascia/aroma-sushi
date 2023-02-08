@@ -16,6 +16,29 @@ export const aboutImagesArr = [
   '/assets/about/about-2.jpg',
   '/assets/about/about-3.jpg',
 ];
+
+export const navbarData = [
+  {
+    id: 'n1',
+    title: 'home',
+    path: '/',
+  },
+  {
+    id: 'n2',
+    title: 'about',
+    path: '/about',
+  },
+  {
+    id: 'n3',
+    title: 'menu',
+    path: '/menu',
+  },
+  {
+    id: 'n4',
+    title: 'reservations',
+    path: '/reservations',
+  },
+];
 export const footerData = [
   {
     id: 'i1',
