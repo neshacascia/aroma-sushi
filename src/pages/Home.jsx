@@ -25,21 +25,8 @@ export default function Home() {
           </p>
 
           <div className="flex gap-8">
-            <Button
-              bg="black"
-              colour="white"
-              text="ABOUT US"
-              hoverBg="white"
-              change="black"
-            />
-            <Button
-              bg="white"
-              colour="black"
-              text="BROWSE MENU"
-              border="true"
-              hoverBg="black"
-              hoverText="white"
-            />
+            <Button text="ABOUT US" />
+            <Button text="BROWSE MENU" border="true" hover="true" />
           </div>
         </div>
 
@@ -71,7 +58,7 @@ export default function Home() {
             BOOK YOUR TABLE FOR <br /> LUNCH OR DINNER
           </span>
 
-          <Button bg="white" colour="black" text="RESERVE NOW" />
+          <Button border="true" text="RESERVE NOW" />
         </div>
       </section>
 
