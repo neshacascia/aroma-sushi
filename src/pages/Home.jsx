@@ -2,6 +2,7 @@ import Header from '../components/Header';
 import DeliveryPlatforms from '../components/DeliveryPlatforms';
 import Button from '../components/Button';
 import AboutImages from '../components/AboutImages';
+import FeaturedMenuItems from '../components/FeaturedMenuItems';
 
 export default function Home() {
   return (
@@ -42,6 +43,9 @@ export default function Home() {
 
         <AboutImages />
       </section>
+
+      <hr />
+      <FeaturedMenuItems />
     </section>
   );
 }
