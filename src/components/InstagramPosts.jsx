@@ -30,12 +30,12 @@ export default function InstagramPhotos() {
     <img
       src={import.meta.env.VITE_IMG_URL + img.attributes.url}
       key={img.id}
-      className="w-instagram h-instagram object-cover relative"
+      className="w-instagram h-instagram object-cover"
     />
   ));
 
   return (
-    <div className="flex h-80 w-screen overflow-x-scroll gap-4">
+    <div className="flex h-full w-screen overflow-x-scroll gap-2 mb-10">
       {instagramPosts}
     </div>
   );
