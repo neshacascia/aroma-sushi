@@ -3,6 +3,7 @@ import DeliveryPlatforms from '../components/DeliveryPlatforms';
 import Button from '../components/Button';
 import AboutImages from '../components/AboutImages';
 import FeaturedMenuItems from '../components/FeaturedMenuItems';
+import InstagramPhotos from '../components/InstagramPosts';
 
 export default function Home() {
   return (
@@ -72,6 +73,8 @@ export default function Home() {
           <Button bg="white" colour="black" text="RESERVE NOW" />
         </div>
       </section>
+
+      <InstagramPhotos />
     </section>
   );
 }
