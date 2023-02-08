@@ -1,0 +1,71 @@
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn::after {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.4s;
+}
+
+.btn::after {
+  background-color: #fff;
+}
+
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
+.menu-items {
+  background: radial-gradient(#d5d5d5 40%, rgba(0, 0, 0, 0) 10%);
+  background-position: 0 13px;
+  background-size: 4px 4px;
+  background-repeat: repeat-x;
+}
+
+.btn-fade {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  z-index: 0;
+  overflow: hidden;
+  /* border: 2px solid rgb(168, 134, 77);
+  color: rgb(168, 134, 77); */
+  text-align: center;
+}
+
+.btn-fade:hover {
+  color: #fff;
+}
+
+.btn-fade:hover:after {
+  width: 100%;
+}
+
+.btn-fade:after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  transition: all 0.3s ease;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background: rgb(168, 134, 77);
+}
