@@ -34,7 +34,7 @@ export default function InstagramPhotos() {
   ));
 
   return (
-    <section className="flex flex-col items-center gap-6">
+    <section className="flex flex-col items-center gap-6 mt-8">
       <h2 className="font-heading font-bold text-2xl">
         FOLLOW US ON{' '}
         <Link to="#" className="underline hover:text-gold">
