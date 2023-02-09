@@ -9,6 +9,7 @@ import {
 import Root from './components/Root';
 import Home from './pages/Home';
 import MobileMenuModal from './components/modals/MobileMenuModal';
+import CartModal from './components/modals/CartModal';
 
 import './App.css';
 
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  const { isClicked } = useContext(StateContext);
+  const { isClicked, isCartOpen } = useContext(StateContext);
 
   return (
     <div className="App">
@@ -33,6 +34,14 @@ function App() {
             <MobileMenuModal />
           </MemoryRouter>,
           document.getElementById('mobile-menu-modal-root')
+        )}
+
+      {isCartOpen &&
+        ReactDOM.createPortal(
+          <MemoryRouter>
+            <CartModal />
+          </MemoryRouter>,
+          document.getElementById('cart-modal-root')
         )}
     </div>
   );
