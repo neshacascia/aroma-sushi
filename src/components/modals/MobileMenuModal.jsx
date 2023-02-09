@@ -15,12 +15,13 @@ const navbarLinks = navbarData.map(link => (
 ));
 
 export default function MobileMenuModal() {
-  const { closeMobileMenu } = useContext(StateContext);
+  const { closeModals } = useContext(StateContext);
+
   return (
     <div className="bg-black text-white h-auto w-screen fixed border-t-line py-6 mt-20">
       <button
         className="text-xl absolute right-0 pr-10 hover:text-gold"
-        onClick={closeMobileMenu}
+        onClick={closeModals}
       >
         <FontAwesomeIcon icon={faXmark}></FontAwesomeIcon>
       </button>
