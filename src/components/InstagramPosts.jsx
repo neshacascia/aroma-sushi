@@ -1,5 +1,4 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 export default function InstagramPhotos() {
@@ -35,8 +34,16 @@ export default function InstagramPhotos() {
   ));
 
   return (
-    <div className="flex h-full w-screen overflow-x-scroll gap-2 mb-10">
-      {instagramPosts}
-    </div>
+    <section className="flex flex-col items-center gap-6">
+      <h2 className="font-heading font-bold text-2xl">
+        FOLLOW US ON{' '}
+        <Link to="#" className="underline hover:text-gold">
+          INSTAGRAM
+        </Link>
+      </h2>
+      <div className="flex h-full w-screen overflow-x-scroll gap-2 mb-10">
+        {instagramPosts}
+      </div>
+    </section>
   );
 }
