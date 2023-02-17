@@ -9,9 +9,9 @@ import akiraSignature from '/assets/about/chef-akira-signature.png';
 
 export default function About() {
   return (
-    <section className="flex flex-col gap-4 pt-40">
+    <section className="flex flex-col gap-4 pt-32">
       <section className="flex flex-col gap-6">
-        <h2 className="font-heading font-bold text-2xl px-6">
+        <h2 className="font-heading font-bold text-3xl px-6">
           ABOUT AROMA SUSHI
         </h2>
         <p className="text-base text-slate-700 px-6">
