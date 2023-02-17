@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import MenuItems from './MenuItems';
 import Button from './Button';
 
 export default function FeaturedMenuItems() {
@@ -17,6 +18,7 @@ export default function FeaturedMenuItems() {
         );
 
         const data = await res.json();
+
         setFeaturedItems(data.data);
       } catch (err) {
         console.log(err);
@@ -27,30 +29,17 @@ export default function FeaturedMenuItems() {
   }, []);
 
   const featuredMenuItems = featuredItems.map(item => (
-    <div className="w-max flex items-center gap-4" key={item.id}>
-      <img
-        src={
-          import.meta.env.VITE_IMG_URL +
-          item?.attributes.image.data.attributes.url
-        }
-        className="w-menuImg h-menuImg rounded-full object-cover"
-      />{' '}
-      <div className="flex flex-col font-heading">
-        <div className="w-80 flex justify-between">
-          <h3 className="font-bold">{item.attributes.name}</h3>
-          <div className="px-16 menu-items"></div>
-          <span className="font-bold">${item.attributes.price}</span>
-        </div>
-
-        <span className="text-gray-600 text-sm w-80 mt-2">
-          {item.attributes.description}
-        </span>
-      </div>
-    </div>
+    <MenuItems
+      key={item.id}
+      src={item?.attributes.image.data[0].attributes.url}
+      name={item.attributes.name}
+      price={item.attributes.price}
+      desc={item.attributes.description}
+    />
   ));
 
   return (
-    <section className="h-auto px-6 flex flex-col items-center my-20">
+    <section className="h-auto px-6 flex flex-col items-center my-16">
       <h2 className="font-heading font-bold text-2xl mb-10">
         FEATURED MENU ITEMS
       </h2>
