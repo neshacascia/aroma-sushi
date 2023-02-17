@@ -3,6 +3,7 @@ import DeliveryPlatforms from '../components/DeliveryPlatforms';
 import Button from '../components/Button';
 import AboutImages from '../components/AboutImages';
 import FeaturedMenuItems from '../components/FeaturedMenuItems';
+import OpeningTimes from '../components/OpeningTimes';
 import InstagramPhotos from '../components/InstagramPosts';
 import Footer from '../components/Footer';
 
@@ -36,32 +37,8 @@ export default function Home() {
       <hr />
       <FeaturedMenuItems />
       <hr />
-
-      <section className="font-heading h-full px-6 my-10">
-        <div className="bg-black text-white flex flex-col items-center gap-4 py-10 ">
-          <h3 className="font-bold text-2xl tracking-widest mb-5">
-            OPENING TIMES
-          </h3>
-          <div className="flex items-center">
-            <span>Tuesdays - Sundays</span>
-            <hr className="border-line w-6 mx-4" />
-            <span>11:00 - 22:00</span>
-          </div>
-
-          <div className="flex items-center mb-5">
-            <span>Mondays</span>
-            <hr className="border-line w-6 mx-4" />
-            <span>Closed</span>
-          </div>
-
-          <span className="text-center font-bold text-lg tracking-wider mb-5">
-            BOOK YOUR TABLE FOR <br /> LUNCH OR DINNER
-          </span>
-
-          <Button border="true" text="RESERVE NOW" />
-        </div>
-      </section>
-
+      <OpeningTimes />
+      <hr />
       <InstagramPhotos />
       <Footer />
     </section>
