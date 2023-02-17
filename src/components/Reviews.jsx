@@ -1,9 +1,5 @@
 import { useState, useEffect } from 'react';
 
-import google from '/assets/reviews-logo/google-logo.svg';
-import yelp from '/assets/reviews-logo/yelp-logo.svg';
-import openTable from '/assets/reviews-logo/opentable-logo.svg';
-
 export default function Reviews() {
   const [reviews, setReviews] = useState([]);
 
@@ -31,7 +27,10 @@ export default function Reviews() {
   }, []);
 
   const reviewsElements = reviews.map(review => (
-    <div className="text-gray-600 font-heading text-base border-button p-8">
+    <div
+      className="text-gray-600 font-heading text-base border-button p-8"
+      key={review.id}
+    >
       <img
         src={
           import.meta.env.VITE_IMG_URL +
