@@ -21,7 +21,7 @@ export default function MobileMenuModal() {
   ));
 
   return (
-    <nav className="bg-black text-white h-auto w-screen fixed border-t-line py-6 mt-20">
+    <nav className="bg-black text-white h-auto w-screen fixed z-20 border-t-line py-6 mt-20">
       <button
         className="text-xl absolute right-0 pr-10 hover:text-gold"
         onClick={closeModals}
