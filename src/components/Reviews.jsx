@@ -1,32 +1,9 @@
-import { useState, useEffect } from 'react';
+import useFetch from './hooks/useFetch';
 
 export default function Reviews() {
-  const [reviews, setReviews] = useState([]);
+  const { data, isLoading } = useFetch('/customer-reviews?populate=*');
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await fetch(
-          import.meta.env.VITE_API_URL + '/customer-reviews?populate=*',
-          {
-            headers: {
-              Authorization: 'bearer ' + import.meta.env.VITE_API_TOKEN,
-            },
-          }
-        );
-
-        const data = await res.json();
-
-        setReviews(data.data);
-      } catch (err) {
-        console.log(err);
-      }
-    }
-
-    fetchData();
-  }, []);
-
-  const reviewsElements = reviews.map(review => (
+  const reviews = data.map(review => (
     <div
       className="text-gray-600 font-heading text-base border-button p-8"
       key={review.id}
@@ -55,8 +32,10 @@ export default function Reviews() {
   ));
 
   return (
-    <section className="flex flex-col gap-6 px-6 mt-10">
-      {reviewsElements}
+    <section className="px-6 mt-10">
+      {!isLoading && data.length > 0 && (
+        <div className="flex flex-col gap-6">{reviews}</div>
+      )}
     </section>
   );
 }

@@ -1,31 +1,10 @@
+import useFetch from './hooks/useFetch';
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 
 export default function InstagramPhotos() {
-  const [posts, setPosts] = useState([]);
+  const { data, isLoading } = useFetch('/instagram-posts?populate=*');
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await fetch(
-          import.meta.env.VITE_API_URL + '/instagram-posts?populate=*',
-          {
-            headers: {
-              Authorization: 'bearer ' + import.meta.env.VITE_API_TOKEN,
-            },
-          }
-        );
-        const data = await res.json();
-        setPosts(data.data);
-      } catch (err) {
-        console.log(err);
-      }
-    }
-
-    fetchData();
-  }, []);
-
-  const instagramPosts = posts[0]?.attributes.instagram.data.map(img => (
+  const posts = data[0]?.attributes.instagram.data.map(img => (
     <img
       src={import.meta.env.VITE_IMG_URL + img.attributes.url}
       key={img.id}
@@ -41,9 +20,11 @@ export default function InstagramPhotos() {
           INSTAGRAM
         </Link>
       </h2>
-      <div className="flex h-full w-screen overflow-x-scroll gap-2 mb-10">
-        {instagramPosts}
-      </div>
+      {!isLoading && data.length > 0 && (
+        <div className="flex h-full w-screen overflow-x-scroll gap-2 mb-10">
+          {posts}
+        </div>
+      )}
     </section>
   );
 }
