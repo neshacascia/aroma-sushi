@@ -2,18 +2,19 @@ import React, { useContext } from 'react';
 import ReactDOM from 'react-dom';
 import { StateContext } from './context/StateContext';
 import { Routes, Route, MemoryRouter } from 'react-router-dom';
-import Root from './components/Root';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import About from './pages/About';
+import Menu from './pages/Menu';
 
 import MobileMenuModal from './components/modals/MobileMenuModal';
 import CartModal from './components/modals/CartModal';
+import ItemModal from './components/modals/ItemModal';
 
 import './App.css';
 
 function App() {
-  const { isClicked, isCartOpen } = useContext(StateContext);
+  const { isClicked, isCartOpen, itemOpened } = useContext(StateContext);
 
   return (
     <div className="App">
@@ -21,6 +22,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />}></Route>
         <Route exact path="/about" element={<About />}></Route>
+        <Route path="/menu" element={<Menu />}></Route>
       </Routes>
 
       {isClicked &&
@@ -33,6 +35,12 @@ function App() {
         ReactDOM.createPortal(
           <CartModal />,
           document.getElementById('cart-modal-root')
+        )}
+
+      {itemOpened &&
+        ReactDOM.createPortal(
+          <ItemModal />,
+          document.getElementById('item-modal-root')
         )}
     </div>
   );

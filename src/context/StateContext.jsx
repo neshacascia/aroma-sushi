@@ -5,6 +5,9 @@ const StateContext = createContext();
 function StateContextProvider(props) {
   const [isClicked, setIsClicked] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [itemOpened, setItemOpened] = useState(false);
+  const [selectedItem, setSelectedItem] = useState('');
+  const [selectedItemPrice, setSelectedItemPrice] = useState(0);
 
   function openMobileMenu() {
     setIsClicked(true);
@@ -13,6 +16,7 @@ function StateContextProvider(props) {
   function closeModals() {
     setIsClicked(false);
     setIsCartOpen(false);
+    setItemOpened(false);
   }
 
   function openCart() {
@@ -21,7 +25,19 @@ function StateContextProvider(props) {
 
   return (
     <StateContext.Provider
-      value={{ isClicked, openMobileMenu, closeModals, isCartOpen, openCart }}
+      value={{
+        isClicked,
+        isCartOpen,
+        itemOpened,
+        setItemOpened,
+        openMobileMenu,
+        closeModals,
+        openCart,
+        setSelectedItem,
+        selectedItem,
+        selectedItemPrice,
+        setSelectedItemPrice,
+      }}
     >
       {props.children}
     </StateContext.Provider>
