@@ -8,7 +8,8 @@ import { useState } from 'react';
 export default function ItemModal() {
   const { selectedItem, closeModals, selectedItemPrice } =
     useContext(StateContext);
-  const { quantity, setQuantity } = useState(1);
+
+  const [quantity, setQuantity] = useState(1);
 
   function increaseQuantity() {
     setQuantity(prevQuantity => prevQuantity + 1);
@@ -21,6 +22,8 @@ export default function ItemModal() {
   function submitHandler(e) {
     e.preventDefault();
   }
+
+  const disabledMinusButton = quantity === 1;
 
   return (
     <div className="bg-overlay h-screen w-screen fixed z-20 grid place-items-center">
@@ -35,17 +38,17 @@ export default function ItemModal() {
 
         <hr />
 
-        <form className="flex flex-col gap-4 p-6" onSubmit={submitHandler}>
+        <form className="flex flex-col gap-6 p-6" onSubmit={submitHandler}>
           <div className="flex flex-col gap-2">
             <label htmlFor="instructions" className="font-bold">
               Special Instructions
             </label>
-            <input
+            <textarea
               type="text"
               id="instructions"
               placeholder="No wasabi please..."
               className="text-black text-xs border-2 py-2 pl-4"
-            />
+            ></textarea>
           </div>
 
           <div className="flex justify-between">
@@ -53,23 +56,32 @@ export default function ItemModal() {
               Quantity
             </label>
             <div className="flex justify-between gap-4">
-              <button onClick={increaseQuantity}>
-                <FontAwesomeIcon icon={faMinus}></FontAwesomeIcon>
+              <button onClick={decreaseQuantity} disabled={disabledMinusButton}>
+                <FontAwesomeIcon
+                  icon={faMinus}
+                  className="hover:text-gold"
+                ></FontAwesomeIcon>
               </button>
               <input
                 type="number"
-                className="text-black"
-                value="1"
+                className="text-black pl-2"
+                value={quantity}
                 min="0"
                 max="10"
               />
-              <button onClick={decreaseQuantity}>
-                <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>
+              <button onClick={increaseQuantity}>
+                <FontAwesomeIcon
+                  icon={faPlus}
+                  className="hover:text-gold"
+                ></FontAwesomeIcon>
               </button>
             </div>
           </div>
 
-          <button className="text-white bg-black flex justify-center gap-4 py-4 mx-8" onClick={closeModals}>
+          <button
+            className="text-white bg-black flex justify-center gap-4 py-4 mx-8 hover:bg-gold btn-add"
+            onClick={closeModals}
+          >
             <span className="border-white border-r-button pr-4">
               ${selectedItemPrice}
             </span>
