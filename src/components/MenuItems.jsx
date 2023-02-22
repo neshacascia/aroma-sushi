@@ -2,13 +2,11 @@ import { useContext } from 'react';
 import { StateContext } from '../context/StateContext';
 
 export default function MenuItems(props) {
-  const { setItemOpened, setSelectedItem, setSelectedItemPrice } =
-    useContext(StateContext);
+  const { setItemOpened, setSelectedItem } = useContext(StateContext);
 
-  function openItemModal(name) {
+  function openItemModal() {
     setItemOpened(true);
-    setSelectedItem(name);
-    setSelectedItemPrice(props.price);
+    setSelectedItem({ ...props });
   }
 
   return (
@@ -21,7 +19,7 @@ export default function MenuItems(props) {
         <div className="w-80 flex justify-between">
           <h3
             className="font-bold cursor-pointer hover:text-gold"
-            onClick={() => openItemModal(props.name)}
+            onClick={() => openItemModal()}
           >
             {props.name}
           </h3>
