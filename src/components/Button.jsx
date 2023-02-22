@@ -1,5 +1,12 @@
 export default function Button(props) {
-  return (
+  return props.menu ? (
+    <button
+      onClick={props.onClick}
+      className={`text-black bg-white border-black border-2 active:bg-black focus:bg-black focus:text-white after:bg-black hover:text-white px-8 py-4 btn-fade`}
+    >
+      {props.text}
+    </button>
+  ) : (
     <button
       className={`${
         props.border && props.hover
