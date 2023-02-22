@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import ReactDOM from 'react-dom';
 import { StateContext } from './context/StateContext';
-import { Routes, Route, MemoryRouter } from 'react-router-dom';
+import CartProvider from './context/CartContext';
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -17,32 +18,34 @@ function App() {
   const { isClicked, isCartOpen, itemOpened } = useContext(StateContext);
 
   return (
-    <div className="App">
-      <Navbar />
-      <Routes>
-        <Route exact path="/" element={<Home />}></Route>
-        <Route exact path="/about" element={<About />}></Route>
-        <Route path="/menu" element={<Menu />}></Route>
-      </Routes>
+    <CartProvider>
+      <div className="App">
+        <Navbar />
+        <Routes>
+          <Route exact path="/" element={<Home />}></Route>
+          <Route exact path="/about" element={<About />}></Route>
+          <Route path="/menu" element={<Menu />}></Route>
+        </Routes>
 
-      {isClicked &&
-        ReactDOM.createPortal(
-          <MobileMenuModal />,
-          document.getElementById('mobile-menu-modal-root')
-        )}
+        {isClicked &&
+          ReactDOM.createPortal(
+            <MobileMenuModal />,
+            document.getElementById('mobile-menu-modal-root')
+          )}
 
-      {isCartOpen &&
-        ReactDOM.createPortal(
-          <CartModal />,
-          document.getElementById('cart-modal-root')
-        )}
+        {isCartOpen &&
+          ReactDOM.createPortal(
+            <CartModal />,
+            document.getElementById('cart-modal-root')
+          )}
 
-      {itemOpened &&
-        ReactDOM.createPortal(
-          <ItemModal />,
-          document.getElementById('item-modal-root')
-        )}
-    </div>
+        {itemOpened &&
+          ReactDOM.createPortal(
+            <ItemModal />,
+            document.getElementById('item-modal-root')
+          )}
+      </div>
+    </CartProvider>
   );
 }
 
