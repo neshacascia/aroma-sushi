@@ -69,3 +69,13 @@ export const brandIcons = [
   faSquareTwitter,
   faSquareYoutube,
 ];
+
+export function getProductData(productsArray, id) {
+  let productData = productsArray.find(product => product.id === id);
+
+  if (productData === undefined) {
+    return;
+  }
+
+  return productData;
+}
