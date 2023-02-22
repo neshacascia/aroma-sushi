@@ -1,10 +1,14 @@
 import { useContext } from 'react';
 import { StateContext } from '../../context/StateContext';
+import Cart from '../cart/Cart';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { CartContext } from '../../context/CartContext';
 
 export default function CartModal() {
+  const cart = useContext(CartContext);
+
   const { closeModals } = useContext(StateContext);
 
   return (
@@ -19,7 +23,13 @@ export default function CartModal() {
         </div>
 
         <hr />
-        <p className="px-6 py-10 text-center">No items found.</p>
+        <Cart />
+
+        {cart.items.length > 0 && (
+          <button className="bg-black font-heading font-bold text-white tracking-wider h-14 px-8 py-4 my-6 mx-16 hover:bg-gold btn-fade">
+            CHECKOUT
+          </button>
+        )}
       </div>
     </div>
   );
