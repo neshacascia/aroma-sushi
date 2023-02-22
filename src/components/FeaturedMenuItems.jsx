@@ -8,6 +8,7 @@ export default function FeaturedMenuItems() {
   const featuredMenuItems = data.map(item => (
     <MenuItems
       key={item.id}
+      id={item.id}
       src={item?.attributes.image.data[0].attributes.url}
       name={item.attributes.name}
       price={item.attributes.price}
